@@ -51,7 +51,7 @@ $schema = [
   <div class="container bar">
     <a class="brand" href="<?= e(url('/')) ?>" aria-label="<?= e(SITE_NAME) ?> – accueil">
       <img src="<?= e(asset('img/logo.svg')) ?>" width="44" height="44" alt="">
-      <span>Inspection Drone <b>France</b></span>
+      <span class="brand-text"><span class="brand-inspection">Inspection</span> <span class="brand-drone">Drone</span> <b class="brand-country">France</b></span>
     </a>
     <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-label="Ouvrir le menu">
     <label for="menu-toggle" class="burger" aria-hidden="true"><span></span></label>
