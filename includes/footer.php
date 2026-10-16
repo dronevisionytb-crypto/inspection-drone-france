@@ -1,12 +1,14 @@
 </main>
-<section class="cta-band">
+<section>
   <div class="container">
+    <div class="cta-band">
     <h2>Un projet d'inspection à Lyon ou Bron ?</h2>
     <p>Devis gratuit et réponse rapide.</p>
     <p>
       <a class="btn btn-red" href="tel:<?= SITE_PHONE_TEL ?>">Appeler le <?= e(SITE_PHONE) ?></a>
       <a class="btn btn-light" href="<?= e(url('/contact.php')) ?>">Demander un devis</a>
     </p>
+    </div>
   </div>
 </section>
 <footer class="site-footer">
