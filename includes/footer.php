@@ -5,7 +5,7 @@
     <p>Devis gratuit et réponse rapide.</p>
     <p>
       <a class="btn btn-red" href="tel:<?= SITE_PHONE_TEL ?>">Appeler le <?= e(SITE_PHONE) ?></a>
-      <a class="btn btn-light" href="/contact.php">Demander un devis</a>
+      <a class="btn btn-light" href="<?= e(url('/contact.php')) ?>">Demander un devis</a>
     </p>
   </div>
 </section>
@@ -18,9 +18,9 @@
     <div>
       <strong>Services</strong>
       <ul>
-        <li><a href="/inspection-panneaux-solaires.php">Inspection panneaux solaires</a></li>
-        <li><a href="/thermographie-batiment.php">Thermographie bâtiment</a></li>
-        <li><a href="/photogrammetrie.php">Photogrammétrie 3D</a></li>
+        <li><a href="<?= e(url('/inspection-panneaux-solaires.php')) ?>">Inspection panneaux solaires</a></li>
+        <li><a href="<?= e(url('/thermographie-batiment.php')) ?>">Thermographie bâtiment</a></li>
+        <li><a href="<?= e(url('/photogrammetrie.php')) ?>">Photogrammétrie 3D</a></li>
       </ul>
     </div>
     <div>
@@ -28,8 +28,8 @@
       <ul>
         <li><a href="tel:<?= SITE_PHONE_TEL ?>"><?= e(SITE_PHONE) ?></a></li>
         <li><a href="mailto:<?= e(SITE_EMAIL) ?>"><?= e(SITE_EMAIL) ?></a></li>
-        <li><a href="/mentions-legales.php">Mentions légales</a></li>
-        <li><a href="/politique-confidentialite.php">Confidentialité</a></li>
+        <li><a href="<?= e(url('/mentions-legales.php')) ?>">Mentions légales</a></li>
+        <li><a href="<?= e(url('/politique-confidentialite.php')) ?>">Confidentialité</a></li>
       </ul>
     </div>
   </div>

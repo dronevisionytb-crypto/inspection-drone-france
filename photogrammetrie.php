@@ -13,9 +13,9 @@ include __DIR__ . '/includes/header.php';
       <p>La photogrammétrie par drone transforme des centaines de photographies en modèle 3D et orthophoto précis. Utile pour documenter un bâtiment, suivre un chantier ou mesurer une surface ou un volume à Lyon et Bron.</p>
       <h2>Ce que vous obtenez</h2>
       <ul class="checks"><li>Modèle 3D et nuage de points</li><li>Orthophoto haute résolution</li><li>Mesures de surfaces, distances et volumes</li><li>Livrables dans des formats standards</li></ul>
-      <div class="actions"><a class="btn btn-red" href="tel:<?= SITE_PHONE_TEL ?>">Appeler</a><a class="btn btn-blue" href="/contact.php">Demander un devis</a></div>
+      <div class="actions"><a class="btn btn-red" href="tel:<?= SITE_PHONE_TEL ?>">Appeler</a><a class="btn btn-blue" href="<?= e(url('/contact.php')) ?>">Demander un devis</a></div>
     </div>
-    <img src="/assets/img/photo.svg" width="600" height="400" alt="Modèle 3D d'un site réalisé par photogrammétrie par drone">
+    <img src="<?= e(url('/assets/img/photo.svg')) ?>" width="600" height="400" alt="Modèle 3D d'un site réalisé par photogrammétrie par drone">
   </div>
 </section>
 <?php include __DIR__ . '/includes/footer.php'; ?>
