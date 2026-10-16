@@ -7,6 +7,7 @@ const SITE_PHONE_TEL = '+33624882137';
 const SITE_EMAIL  = 'contact@inspectiondronefrance.fr';
 const CONTACT_RECIPIENT = 'johanroux@numericable.fr'; // reçoit les demandes du formulaire
 const SITE_CITY   = 'Bron';
+define('FORM_SECRET', getenv('FORM_SECRET') ?: '67d8b451a1bfe5d60690d428a03374777920f5151f751dca'); // clé du jeton anti-bot : définir la variable d'environnement FORM_SECRET en production
 
 // Chemin de base (sous-dossier). Surcharge possible via la variable d'environnement SITE_BASE_PATH
 // (ex. '/inspection-drone-france', '' pour la racine) ; sinon détection automatique.

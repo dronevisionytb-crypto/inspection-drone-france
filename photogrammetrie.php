@@ -2,7 +2,6 @@
 $title = 'Photogrammétrie par drone et modèle 3D à Lyon | Inspection Drone France';
 $description = 'Photogrammétrie par drone à Lyon et Bron : modèles 3D, orthophotos et mesures de sites et de bâtiments. Devis gratuit.';
 $path = '/photogrammetrie.php';
-$image = '/assets/img/photo.svg';
 include __DIR__ . '/includes/header.php';
 $svc = [
   'crumb' => 'Photogrammétrie 3D',

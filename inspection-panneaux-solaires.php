@@ -2,7 +2,6 @@
 $title = 'Inspection panneaux solaires par drone à Lyon | Inspection Drone France';
 $description = 'Inspection de panneaux solaires par drone thermique à Lyon et Bron : détection des points chauds et modules défectueux, rapport détaillé. Devis gratuit.';
 $path = '/inspection-panneaux-solaires.php';
-$image = '/assets/img/solar.svg';
 include __DIR__ . '/includes/header.php';
 $svc = [
   'crumb' => 'Panneaux solaires',

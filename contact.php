@@ -13,8 +13,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Pas de retours à la ligne hors message : évite l'injection d'en-têtes mail
         $v[$k] = $k === 'message' ? mb_substr($val, 0, 5000) : mb_substr(preg_replace('/[\r\n]+/', ' ', $val), 0, 200);
     }
-    if (!empty($_POST['website'])) {
-        $status = 'ok'; // honeypot : robot
+    // Jeton signé et horodaté : rejette les envois trop rapides, falsifiés ou expirés
+    [$ts, $sig] = array_pad(explode('.', (string)($_POST['tk'] ?? ''), 2), 2, '');
+    $elapsed = ctype_digit($ts) ? time() - (int)$ts : -1;
+    $signed = ctype_digit($ts) && hash_equals(hash_hmac('sha256', $ts, FORM_SECRET), $sig);
+    $tokenOk = $signed && $elapsed >= 4 && $elapsed <= 7200;
+    $links = preg_match_all('~https?://|www\.|\[url~i', $v['message']);
+    $spamText = $links > 1 || preg_match('~<a\s|\[/?(url|link)\]|\b(viagra|cialis|casino|seo services|backlinks?)\b~i', $v['message']);
+    if ($signed && !$tokenOk && empty($_POST['website'])) {
+        $status = 'err'; // jeton expiré ou envoi instantané (autofill) : l'utilisateur peut réessayer
+    } elseif (!empty($_POST['website']) || !$tokenOk || $spamText) {
+        $status = 'ok'; // honeypot / anti-bot : réponse neutre, aucun envoi
     } elseif ($v['name'] === '' || !filter_var($v['email'], FILTER_VALIDATE_EMAIL) || $v['message'] === ''
         || !in_array($v['service'], $services, true) || empty($_POST['consent'])) {
         $status = 'err';
@@ -25,6 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $status = @mail(CONTACT_RECIPIENT, $subject, $body, $headers, '-f' . SITE_EMAIL) ? 'ok' : 'fail';
     }
 }
+$formTs = (string)time();
+$formToken = $formTs . '.' . hash_hmac('sha256', $formTs, FORM_SECRET);
 include __DIR__ . '/includes/header.php';
 ?>
 <div class="page-title"><div class="container"><h1>Contact et demande de devis</h1><p>Réponse rapide – devis gratuit</p></div></div>
@@ -46,6 +57,7 @@ include __DIR__ . '/includes/header.php';
           </select></div>
         </div>
         <div><label for="message">Votre projet *</label><textarea id="message" name="message" rows="6" required><?= e($v['message']) ?></textarea></div>
+        <input type="hidden" name="tk" value="<?= e($formToken) ?>">
         <div class="hp" aria-hidden="true"><label for="website">Ne pas remplir</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div>
         <div><label class="consent"><input type="checkbox" name="consent" value="1" required> <span>J'accepte que mes données soient utilisées pour répondre à ma demande (voir la <a href="<?= e(url('/politique-confidentialite.php')) ?>">politique de confidentialité</a>). *</span></label></div>
         <div><button class="btn btn-red btn-lg" type="submit">Envoyer ma demande</button></div>

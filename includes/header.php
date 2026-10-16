@@ -3,7 +3,7 @@ require_once __DIR__ . '/config.php';
 $title = $title ?? SITE_NAME;
 $description = $description ?? '';
 $path = $path ?? '/';
-$image = $image ?? '/assets/img/hero.svg';
+$image = $image ?? '/assets/img/og-image.jpg';
 $nav = [
   '/' => 'Accueil',
   '/services.php' => 'Services',
@@ -15,12 +15,15 @@ $schema = [
   '@context' => 'https://schema.org',
   '@type' => 'ProfessionalService',
   'name' => SITE_NAME,
+  '@id' => abs_url('/') . '#organization',
   'url' => abs_url('/'),
   'telephone' => '+33 6 24 88 21 37',
   'email' => SITE_EMAIL,
   'image' => abs_url('/assets/img/logo.svg'),
   'description' => 'Inspection par drone à Bron et Lyon : panneaux solaires, thermographie de bâtiment, photogrammétrie 3D.',
-  'address' => ['@type' => 'PostalAddress', 'addressLocality' => 'Bron', 'addressCountry' => 'FR'],
+  'logo' => abs_url('/assets/img/logo.svg'),
+  'address' => ['@type' => 'PostalAddress', 'addressLocality' => 'Bron', 'postalCode' => '69500', 'addressRegion' => 'Auvergne-Rhône-Alpes', 'addressCountry' => 'FR'],
+  'contactPoint' => ['@type' => 'ContactPoint', 'contactType' => 'customer service', 'telephone' => '+33 6 24 88 21 37', 'email' => SITE_EMAIL, 'areaServed' => 'FR', 'availableLanguage' => 'fr'],
   'areaServed' => ['Bron', 'Lyon', 'Villeurbanne', 'Vénissieux', 'Saint-Priest', 'Décines-Charpieu', 'Caluire-et-Cuire', 'Métropole de Lyon'],
   'knowsAbout' => ['Inspection panneau solaire par drone', 'Thermographie bâtiment drone', 'Photogrammétrie drone'],
 ];
@@ -39,6 +42,13 @@ $schema = [
 <meta property="og:description" content="<?= e($description) ?>">
 <meta property="og:url" content="<?= e(abs_url($path)) ?>">
 <meta property="og:image" content="<?= e(abs_url($image)) ?>">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="<?= e(SITE_NAME) ?>">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="<?= e($title) ?>">
+<meta name="twitter:description" content="<?= e($description) ?>">
+<meta name="twitter:image" content="<?= e(abs_url($image)) ?>">
 <meta name="theme-color" content="#1b3a6b">
 <link rel="icon" href="<?= e(asset('img/logo.svg')) ?>" type="image/svg+xml">
 <link rel="stylesheet" href="<?= e(asset('css/style.css')) ?>">

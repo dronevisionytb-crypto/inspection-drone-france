@@ -2,7 +2,6 @@
 $title = 'Thermographie bâtiment par drone à Lyon | Inspection Drone France';
 $description = 'Thermographie de bâtiment par drone à Lyon et Bron : détection des déperditions de chaleur, ponts thermiques et défauts d\'isolation. Devis gratuit.';
 $path = '/thermographie-batiment.php';
-$image = '/assets/img/thermo.svg';
 include __DIR__ . '/includes/header.php';
 $svc = [
   'crumb' => 'Thermographie bâtiment',
