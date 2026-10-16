@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://www.inspection-drone-france.fr/sitemap.xml
