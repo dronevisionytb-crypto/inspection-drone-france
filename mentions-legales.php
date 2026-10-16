@@ -5,7 +5,7 @@ $path = '/mentions-legales.php';
 include __DIR__ . '/includes/header.php';
 ?>
 <div class="page-title"><div class="container"><h1>Mentions légales</h1></div></div>
-<section>
+<section class="section">
   <div class="container prose">
     <h2>Éditeur du site</h2>
     <p>Inspection Drone France – entreprise en cours de création.<br>

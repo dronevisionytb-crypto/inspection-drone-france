@@ -5,7 +5,7 @@ $path = '/politique-confidentialite.php';
 include __DIR__ . '/includes/header.php';
 ?>
 <div class="page-title"><div class="container"><h1>Politique de confidentialité</h1></div></div>
-<section>
+<section class="section">
   <div class="container prose">
     <h2>Responsable du traitement</h2>
     <p>Inspection Drone France, Bron – <a href="mailto:<?= e(SITE_EMAIL) ?>"><?= e(SITE_EMAIL) ?></a>.</p>

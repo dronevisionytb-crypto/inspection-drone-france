@@ -28,30 +28,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 include __DIR__ . '/includes/header.php';
 ?>
 <div class="page-title"><div class="container"><h1>Contact et demande de devis</h1><p>Réponse rapide – devis gratuit</p></div></div>
-<section>
-  <div class="container split">
-    <div>
+<section class="section">
+  <div class="container contact-grid">
+    <div class="form-card reveal">
       <?php if ($status === 'ok'): ?><div class="notice ok" role="status">Merci, votre message a bien été envoyé. Nous vous répondons rapidement.</div>
       <?php elseif ($status === 'err'): ?><div class="notice err" role="alert">Merci de remplir tous les champs obligatoires avec un email valide et d'accepter le traitement de vos données.</div>
       <?php elseif ($status === 'fail'): ?><div class="notice err" role="alert">L'envoi a échoué. Merci de nous appeler au <?= e(SITE_PHONE) ?>.</div><?php endif; ?>
       <form method="post" action="<?= e(url('/contact.php')) ?>">
-        <div><label for="name">Nom *</label><input id="name" name="name" required autocomplete="name" value="<?= e($v['name']) ?>"></div>
-        <div><label for="email">Email *</label><input id="email" type="email" name="email" required autocomplete="email" value="<?= e($v['email']) ?>"></div>
-        <div><label for="phone">Téléphone</label><input id="phone" type="tel" name="phone" autocomplete="tel" value="<?= e($v['phone']) ?>"></div>
-        <div><label for="service">Service *</label><select id="service" name="service" required>
-          <?php foreach ($services as $s): ?><option<?= $v['service'] === $s ? ' selected' : '' ?>><?= e($s) ?></option><?php endforeach; ?>
-        </select></div>
+        <div class="form-row">
+          <div><label for="name">Nom *</label><input id="name" name="name" required autocomplete="name" value="<?= e($v['name']) ?>"></div>
+          <div><label for="email">Email *</label><input id="email" type="email" name="email" required autocomplete="email" value="<?= e($v['email']) ?>"></div>
+        </div>
+        <div class="form-row">
+          <div><label for="phone">Téléphone</label><input id="phone" type="tel" name="phone" autocomplete="tel" value="<?= e($v['phone']) ?>"></div>
+          <div><label for="service">Service *</label><select id="service" name="service" required>
+            <?php foreach ($services as $s): ?><option<?= $v['service'] === $s ? ' selected' : '' ?>><?= e($s) ?></option><?php endforeach; ?>
+          </select></div>
+        </div>
         <div><label for="message">Votre projet *</label><textarea id="message" name="message" rows="6" required><?= e($v['message']) ?></textarea></div>
         <div class="hp" aria-hidden="true"><label for="website">Ne pas remplir</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div>
-        <div><label><input type="checkbox" name="consent" value="1" required style="width:auto"> J'accepte que mes données soient utilisées pour répondre à ma demande (voir la <a href="<?= e(url('/politique-confidentialite.php')) ?>">politique de confidentialité</a>). *</label></div>
-        <button class="btn btn-red" type="submit">Envoyer ma demande</button>
+        <div><label class="consent"><input type="checkbox" name="consent" value="1" required> <span>J'accepte que mes données soient utilisées pour répondre à ma demande (voir la <a href="<?= e(url('/politique-confidentialite.php')) ?>">politique de confidentialité</a>). *</span></label></div>
+        <div><button class="btn btn-red btn-lg" type="submit">Envoyer ma demande</button></div>
       </form>
     </div>
-    <div class="prose">
+    <aside class="info-card reveal">
       <h2>Nos coordonnées</h2>
-      <p>Téléphone : <a href="tel:<?= SITE_PHONE_TEL ?>"><?= e(SITE_PHONE) ?></a><br>Email : <a href="mailto:<?= e(SITE_EMAIL) ?>"><?= e(SITE_EMAIL) ?></a></p>
-      <p>Zone d'intervention : Bron, Lyon et métropole de Lyon.</p>
-    </div>
+      <ul class="info-list">
+        <li><?= icon('phone', 20) ?><div><small>Téléphone</small><a href="tel:<?= SITE_PHONE_TEL ?>"><?= e(SITE_PHONE) ?></a></div></li>
+        <li><?= icon('mail', 20) ?><div><small>Email</small><a href="mailto:<?= e(SITE_EMAIL) ?>"><?= e(SITE_EMAIL) ?></a></div></li>
+        <li><?= icon('pin', 20) ?><div><small>Zone d'intervention</small>Bron, Lyon et métropole de Lyon</div></li>
+        <li><?= icon('clock', 20) ?><div><small>Devis</small>Gratuit, réponse rapide</div></li>
+      </ul>
+    </aside>
   </div>
 </section>
 <?php include __DIR__ . '/includes/footer.php'; ?>
