@@ -20,9 +20,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $status = 'err';
     } else {
         $body = "Nom : {$v['name']}\nEmail : {$v['email']}\nTéléphone : {$v['phone']}\nService : {$v['service']}\n\n{$v['message']}";
-        $headers = 'From: ' . SITE_EMAIL . "\r\nReply-To: {$v['email']}\r\nContent-Type: text/plain; charset=UTF-8";
+        $headers = 'From: ' . SITE_NAME . ' <' . SITE_EMAIL . '>' . "\r\nReply-To: {$v['email']}\r\nContent-Type: text/plain; charset=UTF-8";
         $subject = '=?UTF-8?B?' . base64_encode('Demande de devis - ' . $v['service']) . '?=';
-        $status = @mail(SITE_EMAIL, $subject, $body, $headers) ? 'ok' : 'fail';
+        $status = @mail(CONTACT_RECIPIENT, $subject, $body, $headers, '-f' . SITE_EMAIL) ? 'ok' : 'fail';
     }
 }
 include __DIR__ . '/includes/header.php';

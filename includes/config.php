@@ -1,10 +1,11 @@
 <?php
 // Configuration centrale du site. Modifier ici le domaine et les coordonnées.
 const SITE_NAME   = 'Inspection Drone France';
-const SITE_URL    = 'https://www.inspection-drone-france.fr'; // À adapter au nom de domaine final
+const SITE_URL    = 'https://inspectiondronefrance.fr';
 const SITE_PHONE  = '06 24 88 21 37';
 const SITE_PHONE_TEL = '+33624882137';
-const SITE_EMAIL  = 'johanroux@numericable.fr';
+const SITE_EMAIL  = 'contact@inspectiondronefrance.fr';
+const CONTACT_RECIPIENT = 'johanroux@numericable.fr'; // reçoit les demandes du formulaire
 const SITE_CITY   = 'Bron';
 
 // Chemin de base (sous-dossier). Surcharge possible via la variable d'environnement SITE_BASE_PATH
