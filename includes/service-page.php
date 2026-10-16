@@ -67,4 +67,17 @@
 </section>
 
 <?php render_cta($svc['cta_title']); ?>
+<?php
+$serviceLd = [
+  '@context' => 'https://schema.org',
+  '@type' => 'Service',
+  'name' => $svc['h1'],
+  'description' => $description,
+  'url' => abs_url($path),
+  'serviceType' => $svc['crumb'],
+  'areaServed' => ['Bron', 'Lyon', 'Métropole de Lyon'],
+  'provider' => ['@type' => 'ProfessionalService', '@id' => abs_url('/') . '#organization', 'name' => SITE_NAME],
+];
+echo '<script type="application/ld+json">' . json_encode($serviceLd, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG) . '</script>';
+?>
 <?php include __DIR__ . '/footer.php'; ?>
