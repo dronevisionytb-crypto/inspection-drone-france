@@ -81,7 +81,7 @@ p{margin:0 0 1rem}
 .hero-visual{position:relative}
 .hero-svg{width:100%;height:auto;filter:drop-shadow(0 30px 50px rgba(0,0,0,.35))}
 .hero-drone{animation:float 6s ease-in-out infinite}
-@keyframes float{50%{transform:translate(320px,140px)}}
+@keyframes float{0%,100%{transform:translate(320px,150px)}50%{transform:translate(320px,138px)}}
 .chip{position:absolute;display:inline-flex;align-items:center;gap:.55rem;padding:.6rem 1rem;border-radius:999px;background:rgba(255,255,255,.95);color:var(--blue);font-weight:700;font-size:.9rem;box-shadow:var(--shadow-lg);animation:bob 5s ease-in-out infinite}
 .chip .icon{color:var(--red)}
 .chip-1{top:6%;left:-2%}
@@ -113,6 +113,8 @@ p{margin:0 0 1rem}
 .card,.svc-card{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s,border-color .3s}
 .card:hover,.svc-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:rgba(27,58,107,.25)}
 .card>img,.svc-card>img{width:100%;aspect-ratio:3/2;object-fit:cover;background:var(--blue-soft);transition:transform .5s}
+.svc-card:focus-within{outline:3px solid var(--blue-l);outline-offset:3px}
+.svc-link:focus-visible{outline:none}
 .svc-card:hover>img{transform:scale(1.04)}
 .card .body,.svc-body{padding:clamp(1.3rem,2vw,2.2rem);display:flex;flex-direction:column;flex:1}
 .svc-media{overflow:hidden;position:relative}
