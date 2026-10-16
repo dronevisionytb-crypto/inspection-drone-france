@@ -10,6 +10,7 @@ $nav = [
   '/a-propos.php' => 'À propos',
   '/contact.php' => 'Contact',
 ];
+$service_paths = ['/inspection-panneaux-solaires.php', '/thermographie-batiment.php', '/photogrammetrie.php'];
 $schema = [
   '@context' => 'https://schema.org',
   '@type' => 'ProfessionalService',
@@ -20,7 +21,7 @@ $schema = [
   'image' => abs_url('/assets/img/logo.svg'),
   'description' => 'Inspection par drone à Bron et Lyon : panneaux solaires, thermographie de bâtiment, photogrammétrie 3D.',
   'address' => ['@type' => 'PostalAddress', 'addressLocality' => 'Bron', 'addressCountry' => 'FR'],
-  'areaServed' => ['Bron', 'Lyon', 'Métropole de Lyon'],
+  'areaServed' => ['Bron', 'Lyon', 'Villeurbanne', 'Vénissieux', 'Saint-Priest', 'Décines-Charpieu', 'Caluire-et-Cuire', 'Métropole de Lyon'],
   'knowsAbout' => ['Inspection panneau solaire par drone', 'Thermographie bâtiment drone', 'Photogrammétrie drone'],
 ];
 ?><!DOCTYPE html>
@@ -41,6 +42,7 @@ $schema = [
 <meta name="theme-color" content="#1b3a6b">
 <link rel="icon" href="<?= e(asset('img/logo.svg')) ?>" type="image/svg+xml">
 <link rel="stylesheet" href="<?= e(asset('css/style.css')) ?>">
+<script src="<?= e(asset('js/main.js')) ?>" defer></script>
 <script type="application/ld+json"><?= json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) ?></script>
 </head>
 <body>
@@ -55,9 +57,9 @@ $schema = [
     <label for="menu-toggle" class="burger" aria-hidden="true"><span></span></label>
     <nav class="nav" aria-label="Navigation principale">
       <?php foreach ($nav as $href => $label): ?>
-        <a href="<?= e(url($href)) ?>"<?= $href === $path ? ' aria-current="page"' : '' ?>><?= e($label) ?></a>
+        <a href="<?= e(url($href)) ?>"<?= ($href === $path || ($href === '/services.php' && in_array($path, $service_paths, true))) ? ' aria-current="page"' : '' ?>><?= e($label) ?></a>
       <?php endforeach; ?>
-      <a class="btn btn-red" href="tel:<?= SITE_PHONE_TEL ?>">Appeler</a>
+      <a class="btn btn-red nav-cta" href="tel:<?= SITE_PHONE_TEL ?>"><?= icon('phone', 18) ?> <?= e(SITE_PHONE) ?></a>
     </nav>
   </div>
 </header>
