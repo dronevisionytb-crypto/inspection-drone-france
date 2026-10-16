@@ -13,7 +13,7 @@ include __DIR__ . '/includes/header.php';
     <p>Le Matrice 4T associe caméra thermique, caméra grand-angle et zoom. Il permet des inspections précises, rapides et sûres.</p>
     <h2>Zone d'intervention</h2>
     <p>Bron, Lyon et toute la métropole de Lyon. Contactez-nous pour tout autre secteur.</p>
-    <p><a class="btn btn-blue" href="/contact.php">Nous contacter</a></p>
+    <p><a class="btn btn-blue" href="<?= e(url('/contact.php')) ?>">Nous contacter</a></p>
   </div>
 </section>
 <?php include __DIR__ . '/includes/footer.php'; ?>

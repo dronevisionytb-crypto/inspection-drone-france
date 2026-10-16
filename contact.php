@@ -34,7 +34,7 @@ include __DIR__ . '/includes/header.php';
       <?php if ($status === 'ok'): ?><div class="notice ok" role="status">Merci, votre message a bien été envoyé. Nous vous répondons rapidement.</div>
       <?php elseif ($status === 'err'): ?><div class="notice err" role="alert">Merci de remplir tous les champs obligatoires avec un email valide et d'accepter le traitement de vos données.</div>
       <?php elseif ($status === 'fail'): ?><div class="notice err" role="alert">L'envoi a échoué. Merci de nous appeler au <?= e(SITE_PHONE) ?>.</div><?php endif; ?>
-      <form method="post" action="/contact.php">
+      <form method="post" action="<?= e(url('/contact.php')) ?>">
         <div><label for="name">Nom *</label><input id="name" name="name" required autocomplete="name" value="<?= e($v['name']) ?>"></div>
         <div><label for="email">Email *</label><input id="email" type="email" name="email" required autocomplete="email" value="<?= e($v['email']) ?>"></div>
         <div><label for="phone">Téléphone</label><input id="phone" type="tel" name="phone" autocomplete="tel" value="<?= e($v['phone']) ?>"></div>
@@ -43,7 +43,7 @@ include __DIR__ . '/includes/header.php';
         </select></div>
         <div><label for="message">Votre projet *</label><textarea id="message" name="message" rows="6" required><?= e($v['message']) ?></textarea></div>
         <div class="hp" aria-hidden="true"><label for="website">Ne pas remplir</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div>
-        <div><label><input type="checkbox" name="consent" value="1" required style="width:auto"> J'accepte que mes données soient utilisées pour répondre à ma demande (voir la <a href="/politique-confidentialite.php">politique de confidentialité</a>). *</label></div>
+        <div><label><input type="checkbox" name="consent" value="1" required style="width:auto"> J'accepte que mes données soient utilisées pour répondre à ma demande (voir la <a href="<?= e(url('/politique-confidentialite.php')) ?>">politique de confidentialité</a>). *</label></div>
         <button class="btn btn-red" type="submit">Envoyer ma demande</button>
       </form>
     </div>

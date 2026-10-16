@@ -13,9 +13,9 @@ include __DIR__ . '/includes/header.php';
       <p>L'inspection de panneaux solaires par drone avec caméra thermique permet de contrôler une installation photovoltaïque en quelques minutes, sans accéder au toit. Nous intervenons à Lyon, Bron et dans la métropole lyonnaise.</p>
       <h2>Ce que vous obtenez</h2>
       <ul class="checks"><li>Détection des points chauds et cellules défectueuses</li><li>Repérage des strings ou modules en panne</li><li>Rapport avec images visibles et thermiques</li><li>Recommandations pour la maintenance</li></ul>
-      <div class="actions"><a class="btn btn-red" href="tel:<?= SITE_PHONE_TEL ?>">Appeler</a><a class="btn btn-blue" href="/contact.php">Demander un devis</a></div>
+      <div class="actions"><a class="btn btn-red" href="tel:<?= SITE_PHONE_TEL ?>">Appeler</a><a class="btn btn-blue" href="<?= e(url('/contact.php')) ?>">Demander un devis</a></div>
     </div>
-    <img src="/assets/img/solar.svg" width="600" height="400" alt="Inspection de panneaux solaires par drone avec détection de cellule défectueuse">
+    <img src="<?= e(url('/assets/img/solar.svg')) ?>" width="600" height="400" alt="Inspection de panneaux solaires par drone avec détection de cellule défectueuse">
   </div>
 </section>
 <?php include __DIR__ . '/includes/footer.php'; ?>
